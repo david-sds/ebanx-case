@@ -27,4 +27,8 @@ describe('ResetController', () => {
 
     expect(accountsRepository.findById('100')).toBeUndefined();
   });
+
+  it('returns OK', () => {
+    expect(controller.reset()).toBe('OK');
+  });
 });

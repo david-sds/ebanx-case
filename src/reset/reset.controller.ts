@@ -7,7 +7,8 @@ export class ResetController {
 
   @Post()
   @HttpCode(200)
-  reset(): void {
+  reset(): string {
     this.accountsRepository.reset();
+    return 'OK';
   }
 }

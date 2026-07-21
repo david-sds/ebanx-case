@@ -26,7 +26,7 @@ describe('AppController (e2e)', () => {
   });
 
   beforeEach(async () => {
-    await request(server).post('/reset').expect(200);
+    await request(server).post('/reset').expect(200).expect('OK');
   });
 
   it('walks through the full deposit/withdraw/transfer flow', async () => {
