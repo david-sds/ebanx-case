@@ -33,4 +33,14 @@ export class EventService {
       balance: account.balance - amount,
     });
   }
+
+  transfer(
+    origin: string,
+    destination: string,
+    amount: number,
+  ): { origin: Account; destination: Account } {
+    const originAccount = this.withdraw(origin, amount);
+    const destinationAccount = this.deposit(destination, amount);
+    return { origin: originAccount, destination: destinationAccount };
+  }
 }
