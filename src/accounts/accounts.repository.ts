@@ -17,4 +17,8 @@ export class AccountsRepository {
     this.accounts.set(account.id, account);
     return account;
   }
+
+  reset(): void {
+    this.accounts.clear();
+  }
 }

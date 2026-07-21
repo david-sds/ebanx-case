@@ -1,5 +1,9 @@
 @baseUrl = http://localhost:3000
 
+### Reset state
+
+POST {{baseUrl}}/reset HTTP/1.1
+
 ### Balance - missing account
 
 GET {{baseUrl}}/balance?account_id=1234 HTTP/1.1
