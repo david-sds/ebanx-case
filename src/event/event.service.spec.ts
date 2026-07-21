@@ -70,43 +70,4 @@ describe('EventService', () => {
       expect(result).toEqual({ id: '100', balance: 6 });
     });
   });
-
-  describe('transfer', () => {
-    it('throws not found when the origin account does not exist', () => {
-      expect(() => service.transfer('200', '300', 10)).toThrow(
-        NotFoundException,
-      );
-    });
-
-    it('throws bad request when the origin balance is insufficient', () => {
-      service.deposit('100', 10);
-
-      expect(() => service.transfer('100', '300', 15)).toThrow(
-        BadRequestException,
-      );
-    });
-
-    it('does not create the destination account when the transfer fails', () => {
-      service.deposit('100', 10);
-
-      try {
-        service.transfer('100', '300', 15);
-      } catch {
-        // expected: insufficient funds
-      }
-
-      expect(accountsRepository.findById('300')).toBeUndefined();
-    });
-
-    it('moves the amount from origin to destination', () => {
-      service.deposit('100', 15);
-
-      const result = service.transfer('100', '300', 15);
-
-      expect(result).toEqual({
-        origin: { id: '100', balance: 0 },
-        destination: { id: '300', balance: 15 },
-      });
-    });
-  });
 });

@@ -1,4 +1,3 @@
-import { CreateEventDto } from './dto/create-event.dto';
 import { Account, AccountsRepository } from '../accounts/accounts.repository';
 import {
   BadRequestException,
@@ -9,10 +8,6 @@ import {
 @Injectable()
 export class EventService {
   constructor(private readonly accountsRepository: AccountsRepository) {}
-
-  create(createEventDto: CreateEventDto) {
-    return `This action adds a new event ${JSON.stringify(createEventDto)}`;
-  }
 
   deposit(destination: string, amount: number): Account {
     const account = this.accountsRepository.findById(destination);
