@@ -1,4 +1,4 @@
-import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import request from 'supertest';
 import type { Server } from 'http';
@@ -16,7 +16,6 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     app.useGlobalFilters(new NotFoundExceptionFilter());
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     await app.init();
     server = app.getHttpServer() as Server;
   });
